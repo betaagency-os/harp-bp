@@ -9,6 +9,7 @@
   "private": true,
   "dependencies": {
     "console-polyfill": "~0.1.2",
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.2",
+    "instantclick": "~3.0.1"
   }
 }

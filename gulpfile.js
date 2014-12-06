@@ -7,6 +7,18 @@ var gifsicle = require('imagemin-gifsicle');
 var jpegtran = require('imagemin-jpegtran');
 var newer = require('gulp-newer');
 
+
+var vendor = {
+  css: [
+    'src/_vendor/normalize.css/normalize.css'
+  ],
+  js: [
+    'src/_vendor/console-polyfill/index.js',
+    'src/_vendor/location.origin.js',
+    'src/_vendor/instantclick/instantclick.js'
+  ]
+};
+
 gulp.task('images', function () {
   return gulp.src('src/_images/*')
       .pipe(newer('src/build/images'))
@@ -16,17 +28,6 @@ gulp.task('images', function () {
       }))
       .pipe(gulp.dest('src/build/images'));
 });
-
-
-var vendor = {
-  css: [
-    'src/_vendor/normalize.css/normalize.css',
-  ],
-  js: [
-    'src/_vendor/console-polyfill/index.js',
-    'src/_vendor/location.origin.js'
-  ]
-};
 
 gulp.task('watch', function() {
   livereload.listen();
