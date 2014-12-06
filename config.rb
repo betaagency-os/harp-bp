@@ -10,7 +10,7 @@ require File.join(sass_extensions, 'libs/rgbapng.rb')
 http_path = "/"
 css_dir = "src/build"
 sass_dir = "src/_sass"
-images_dir = "src/images"
+images_dir = "src/_images"
 javascripts_dir = "/javascripts"
 
 # You can select your preferred output style here (can be overridden via the command line):
