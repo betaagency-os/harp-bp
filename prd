@@ -1,0 +1,7 @@
+#!/bin/bash
+./compile
+
+git add -A .
+git commit -m 'Building site +_+'
+git push origin master
+git push stage master

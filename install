@@ -1,0 +1,3 @@
+#!/bin/bash
+npm install -g harp gulp foreman
+npm install

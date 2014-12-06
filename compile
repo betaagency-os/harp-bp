@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf www
+NODE_ENV='production' harp compile src www
+cp -r php/* www/

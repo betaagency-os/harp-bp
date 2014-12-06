@@ -1,0 +1,18 @@
+-var V = Date.now();
+doctype
+html
+  head
+    meta(charset='utf-8')
+    if environment == "production"
+      script.
+        var API_URL='';
+    else
+      script.
+        var API_URL='http://local.bubujka.org:3001';
+    script.
+      var DATA = !{JSON.stringify(public._data)};
+      var V = !{V};
+    script(src='/javascripts/application.js?v='+V)
+  body
+    != yield
+    != partial("_footer")
