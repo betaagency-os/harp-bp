@@ -3,3 +3,4 @@ export V=$(date +%s)
 rm -rf www
 NODE_ENV='production' harp compile src www
 cp -r php/* www/
+find www -type f -iname '*.swp' -delete
