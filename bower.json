@@ -1,0 +1,14 @@
+{
+  "name": "harp-bp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/betaagency-os/harp-bp",
+  "authors": [
+    "Aleksej Kamynin <zendzirou@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "console-polyfill": "~0.1.2",
+    "normalize.css": "~3.0.2"
+  }
+}
