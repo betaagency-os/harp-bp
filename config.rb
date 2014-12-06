@@ -7,6 +7,7 @@ add_import_path File.join(sass_extensions, 'stylesheets')
 require File.join(sass_extensions, 'libs/retina.rb')
 require File.join(sass_extensions, 'libs/rgbapng.rb')
 # Set this to the root of your project when deployed:
+http_images_path = '/build/images'
 http_path = "/"
 css_dir = "src/build"
 sass_dir = "src/_sass"
@@ -17,7 +18,7 @@ javascripts_dir = "/javascripts"
 # output_style = :expanded or :nested or :compact or :compressed
 #output_style = :compressed
 # To enable relative paths to assets via compass helper functions. Uncomment:
-relative_assets = true
+#relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false
