@@ -20,7 +20,7 @@ var vendor = {
 };
 
 gulp.task('images', function () {
-  return gulp.src('src/_images/*')
+  return gulp.src('src/_images/**')
       .pipe(newer('src/build/images'))
       .pipe(imagemin({
           progressive: true,
