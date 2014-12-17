@@ -14,7 +14,8 @@ var vendor = {
   js: [
     'src/_vendor/console-polyfill/index.js',
     'src/_vendor/location.origin.js',
-    'src/_vendor/instantclick/instantclick.js'
+    'src/_vendor/instantclick/instantclick.js',
+    'src/_vendor/angular/angular.js'
   ]
 };
 

@@ -1,0 +1,32 @@
+div#order-form(ng-controller='OrderCtrl')
+  h1 Связаться с нами
+  label
+    | Имя:
+    input(ng-model='data.name')
+  br
+  label
+    | Контактный телефон:
+    input(ng-model='data.phone')
+  br
+  label
+    | Электронная почта:
+    input(ng-model='data.email')
+  br
+  label
+    | Комментарий:
+    textarea(ng-model='data.comment')
+  br
+  button(ng-click='submit()') Отправить
+
+script.
+  var app = angular.module('app', [])
+  .controller('OrderCtrl', function($scope, $http) {
+    $scope.submit = function(){
+      $http.post(API_URL+'/form.php', $scope.data).success(function(data){
+        console.log(data);
+        alert('Errors: '+data.error+', uid: '+data.uid);
+      });
+    }
+    $scope.data = {};
+  });
+  angular.bootstrap(document.getElementById('order-form'), ['app']);

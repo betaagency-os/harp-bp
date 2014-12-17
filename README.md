@@ -65,3 +65,11 @@
 - config.rb - настройки для compass
 - bin/ - команды для работы с проектом
 - bin/compile - скомпилировать проект и получить папку www готовую для разворачиванияjjjj
+- php/ - php файлы проекта. Доступны из javascript как API_URL+'/{file.php}'
+- php/form.php - Пример реализации формы
+- src/form.jade - Пример реализации формы с использованием angular.js
+
+ Подводные камни
+- при использовании instantclick - необходимо явно отправлять статистику посещений в google analytics (src/_instantclick.jade)
+- при использовании instantclick - необходимо явно инициализировать angular на каждой странице (src/form.jade)
+
