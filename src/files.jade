@@ -1,0 +1,4 @@
+h1 Страницы:
+ul
+  for file in public._contents
+    li: a(href='/'+file, target='_blank')= file

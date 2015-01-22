@@ -53,6 +53,7 @@
 - Сброшены различия стилей у браузеров с помощью [normalize.css](https://github.com/necolas/normalize.css/)
 - Для компиляции шаблонов используется [harp.js](http://harpjs.com/)
 - Можно писать api на php
+- Список файлов по адресу [http://local.bubujka.org:3000/files.html](http://local.bubujka.org:3000/files.html)
 
 # Структура файлов
 
