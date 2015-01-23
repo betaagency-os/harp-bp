@@ -1,11 +1,12 @@
 mixin renderdir(dir, prefix)
-  ul
-    for file in dir._contents
-      if file.match(/\.html$/)
-        li: a(href=prefix+file, target='_blank')= file
+  if dir._contents
+    ul
+      for file in dir._contents
+        if file.match(/\.html$/)
+          li: a(href=prefix+file, target='_blank')= file
   ul
     for obj, dirname in dir
-      if !dirname.match(/^_/)
+      if dirname != 'build' && dirname != 'vendor' && !dirname.match(/^_/) 
         li: h2= '/'+dirname
         +renderdir(obj, prefix+dirname+'/')
 
