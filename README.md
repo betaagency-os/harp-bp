@@ -1,5 +1,8 @@
 # Базовый шаблон для создания сайтов
 
+
+
+
 Тут собраны все инструменты, что используются для сборки сайтов в [http://betaagency.ru](http://betaagency.ru).
 
 # Как начать работать
@@ -54,6 +57,7 @@
 - Для компиляции шаблонов используется [harp.js](http://harpjs.com/)
 - Можно писать api на php
 - Список файлов по адресу [http://local.bubujka.org:3000/files.html](http://local.bubujka.org:3000/files.html)
+- Возможность деплоить папки www на github pages через команду ./bin/gh-pages
 
 # Структура файлов
 

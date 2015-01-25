@@ -1,0 +1,3 @@
+#!/bin/bash
+# Команда для отправки папки www в репозиторий `github` и его ветку `gh-pages`
+git subtree push --prefix www github gh-pages
