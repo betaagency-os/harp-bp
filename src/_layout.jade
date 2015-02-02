@@ -13,12 +13,13 @@ html
     script.
       var DATA = !{JSON.stringify(public._data)};
       var V = !{V};
+      var P = "!{P}";
 
-    script(src='/build/vendor.js?v='+V)
-    link(rel="stylesheet" href="/build/vendor.css?v="+V)
+    script(src=P+'build/vendor.js?v='+V)
+    link(rel="stylesheet" href=P+"build/vendor.css?v="+V)
 
-    script(src='/javascripts/application.js?v='+V)
-    link(rel="stylesheet" href="/build/main.css?v="+V)
+    script(src=P+'javascripts/application.js?v='+V)
+    link(rel="stylesheet" href=P+"build/main.css?v="+V)
   body
     != yield
     != partial("_instantclick")

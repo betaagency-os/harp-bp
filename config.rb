@@ -7,8 +7,8 @@ add_import_path File.join(sass_extensions, 'stylesheets')
 require File.join(sass_extensions, 'libs/retina.rb')
 require File.join(sass_extensions, 'libs/rgbapng.rb')
 # Set this to the root of your project when deployed:
-http_images_path = '/build/images'
-http_path = "/"
+http_images_path = './images'
+http_path = "./"
 css_dir = "src/build"
 sass_dir = "src/_sass"
 images_dir = "src/_images"
