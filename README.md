@@ -111,6 +111,40 @@
 
 Его выводит файл http://local.bubujka.org:3000/files.html.
 
+## Сбор статистики
+
+При разработке сайта, на все динамические кнопки, стоит заранее добавлять следующие аттрибуты:
+
+- data-ss-category **обязательно** - название группы событий (к примеру Video, Forms, Share)
+- data-ss-action **обязательно** - название типа события в группе (Play, Stop, Submit, Vk, Fb)
+- data-ss-label - расшифровка конкретного события (название видео, какая форма, что шарится)
+- data-ss-value - дополнительная информация для события
+
+Данные аттрибуты будут переданы в подключённый на сайт google analytics автоматически при клике.
+
+```html
+<a href='#'
+   onclick='playVideo("Wul32cP3_3Y")'
+   data-ss-category='Videos'
+   data-ss-action='Play'
+   data-ss-label='Weird Owl'
+   data-ss-value='Wul32cP3_3Y'>Play video</a>
+```
+
+Возможна короткая запись:
+
+```html
+<a href='#'
+   onclick='playVideo("Wul32cP3_3Y")'
+   data-ss='Videos,Play,Weird Owl'>Play video</a>
+```
+
+Из javascript доступна глобальная функция SS для отправки статистики:
+
+```javascript
+SS('Videos','Play','Weird Owl');
+```
+
 ## Работа сайта из подкаталога
 
 При указании ссылок на все статичные файлы - нужно указывать префикс **P**.
@@ -131,3 +165,4 @@ a(href=P+'/')
 ```sh
 ./bin/compile
 ```
+

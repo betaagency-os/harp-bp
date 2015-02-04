@@ -1,0 +1,15 @@
+include _vendor/bemto
+h1 Как отдавать свои события в статистику
+ul 
+  li: button Просто кнопка
+  li: button(data-ss-category='TestCategory1', data-ss-action='TestAction1') Кнопка отправляющая статистику
+  li: button(data-ss='TestCategory2,TestAction2') Короткая запись
+  li: button(data-ss-category='TestCategory3') Ошибочная запись
+  li: a(href='?v2' data-ss-category='TestCategory4' data-ss-action='TestAction4') Ссылка со статистикой
+  li: a(href='?v2' data-ss='TestCategory5,TestAction5') Короткая запись 
+  li 
+    a(href='?v2',
+      data-ss-category='TestCategory6',
+      data-ss-action='TestAction6',
+      data-ss-label='TestLabel6',
+      data-ss-value='TestValue6') Полная запись
