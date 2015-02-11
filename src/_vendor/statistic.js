@@ -1,5 +1,6 @@
 function SS(){ // Send Statistic
-  var args = arguments;
+  var args = Array.prototype.slice.call(arguments);
+  var yd = args.join('_');
   var debug = function(){ console.log('stat:',arguments); };
 
   // Google Analytics
@@ -17,7 +18,7 @@ function SS(){ // Send Statistic
 
   // Yandex Metrika
   if(typeof yaCounter !== 'undefined'){
-    yaCounter.reachGoal(args.join('_')); // jshint ignore:line
+    yaCounter.reachGoal(yd); // jshint ignore:line
     debug.apply('yaCounter()',args);
   }
 }
