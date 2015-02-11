@@ -1,0 +1,42 @@
+- var overwrite = public.share._data[current.source]
+- var tags = public.share._data['default']
+- for(var i in overwrite)
+  - tags[i] = overwrite[i]
+- var config = cfg[(environment === 'production') ? 'production' : 'development']
+
+html
+  head
+    meta(property="og:type", content="website")
+    -for(var tag in tags)
+      -if(tag !== 'image' && tag !== 'url' && tag !== 'redirect')
+        -if(tags[tag])
+          meta(property='og:'+tag, content=tags[tag])
+
+    -if(tags.image)
+      meta(property="og:image", content=config.baseurl+'/share/'+tags.image)
+    meta(property="og:url", content=config.baseurl+'/share/'+current.source+'.html')
+  body
+    -if(environment !== 'production')
+      h1 Параметры шаринга:
+      ul
+        -for(var tag in tags)
+          -if(tag !== 'image' && tag !== 'url' && tag !== 'redirect')
+            -if(tags[tag])
+              li 
+                b= tag+':'
+                =tags[tag]
+        -if(tags.redirect)
+          li 
+            b Адрес для перенаправления:  
+            a(href=tags.redirect, target='_blank')
+              script.
+                document.write("#{tags.redirect}"+window.location.search);
+        -if(tags.image)
+          li 
+            b Изображение:
+            br
+            img(src=config.baseurl+'/share/'+tags.image)
+    -else
+      | Redi-di-derecting...
+      script.
+        window.location = "#{config.baseurl+tags.redirect}"+window.location.search;

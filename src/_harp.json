@@ -1,5 +1,16 @@
 {
   "globals":{
-    "P": ""
+    "cfg": {
+      "production": {
+        "baseurl": "http://.............",
+        "staticurl": ".",
+        "apiurl": "."
+      },
+      "development": {
+        "baseurl": "http://local.bubujka.org:3000",
+        "staticurl": ".",
+        "apiurl": "http://local.bubujka.org:3001"
+      }
+    }
   }
 }

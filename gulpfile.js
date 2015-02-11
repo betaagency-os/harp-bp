@@ -17,7 +17,8 @@ var vendor = {
     'src/_vendor/location.origin.js',
     'src/_vendor/instantclick/instantclick.js',
     'src/_vendor/angular/angular.js',
-    'src/_vendor/statistic.js'
+    'src/_vendor/statistic.js',
+    'src/_vendor/share.js'
   ]
 };
 

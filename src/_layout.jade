@@ -1,25 +1,30 @@
--var V = process.env.V || Date.now();
+- var V = process.env.V || Date.now();
+- var tags = public.share._data['default']
+- var config = cfg[(environment === 'production') ? 'production' : 'development']
+
+- var STATICURL = config.staticurl
 //!= partial("_debug")
 doctype
 html
   head
     meta(charset='utf-8')
-    if environment == "production"
-      script.
-        var API_URL='';
-    else
-      script.
-        var API_URL='http://local.bubujka.org:3001';
     script.
-      var DATA = !{JSON.stringify(public._data)};
-      var V = !{V};
-      var P = "!{P}";
+      var ENV = !{JSON.stringify(environment)}; // В каком окружении работает сайт [development|production]
+      var CONFIG = !{JSON.stringify(config)}; // Настройки сайта для данного окружения
 
-    script(src=P+'build/vendor.js?v='+V)
-    link(rel="stylesheet" href=P+"build/vendor.css?v="+V)
+      var DATA = !{JSON.stringify(public._data)}; // Данные сайта 
 
-    script(src=P+'javascripts/application.js?v='+V)
-    link(rel="stylesheet" href=P+"build/main.css?v="+V)
+      var BASEURL=!{JSON.stringify(config.baseurl)}; // Адрес по которому доступна главная страница
+      var APIURL=!{JSON.stringify(config.apiurl)}; // Адрес по которому доступен php
+      var STATICURL = !{JSON.stringify(config.staticurl)}; // Адрес или префикс где лежит статика
+
+      var V = !{JSON.stringify(V)}; // Версия скомпилированного сайта
+
+    script(src=STATICURL+'/build/vendor.js?v='+V)
+    link( href=STATICURL+"/build/vendor.css?v="+V rel="stylesheet")
+    script(src=STATICURL+'/javascripts/application.js?v='+V)
+    link( href=STATICURL+"/build/main.css?v="+V rel="stylesheet")
+
   body
     != yield
     != partial("_instantclick")

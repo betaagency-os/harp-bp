@@ -22,7 +22,7 @@ script.
   var app = angular.module('app', [])
   .controller('OrderCtrl', function($scope, $http) {
     $scope.submit = function(){
-      $http.post(API_URL+'/form.php', $scope.data).success(function(data){
+      $http.post(APIURL+'/form.php', $scope.data).success(function(data){
         console.log(data);
         alert('Errors: '+data.error+', uid: '+data.uid);
       });

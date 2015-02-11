@@ -1,0 +1,13 @@
+{
+  "default": {
+    "title": "Заголовок для шаринга",
+    "image": "img.jpg",
+    "image:width": false,
+    "image:height": false,
+    "description": "Описание для шаринга",
+    "redirect": ""
+  },
+  "general": {
+    "description": "Общее описание для шаринга"
+  }
+}
