@@ -15,8 +15,8 @@ var vendor = {
     'src/_vendor/jquery/dist/jquery.js',
     'src/_vendor/console-polyfill/index.js',
     'src/_vendor/location.origin.js',
-    'src/_vendor/instantclick/instantclick.js',
-    'src/_vendor/angular/angular.js',
+    //'src/_vendor/instantclick/instantclick.js',
+    //'src/_vendor/angular/angular.js',
     'src/_vendor/statistic.js',
     'src/_vendor/share.js'
   ]
@@ -42,6 +42,7 @@ gulp.task('watch', function() {
   livereload.listen();
   gulp.watch('src/_images/{**/*,*}.{jpg,jpeg}', ['images-jpg']);
   gulp.watch('src/_images/{**/*,*}.{png,gif}', ['images']);
+  gulp.watch('src/javascripts/**', ['js']);
   gulp.watch(['src/build/**', 'src/**.jade', 'src/javascripts/**']).on('change', livereload.changed);
 });
 
@@ -57,4 +58,10 @@ gulp.task('vendor-js', function() {
     .pipe(gulp.dest('src/build/'));
 });
 
-gulp.task('default', ['images', 'images-jpg', 'vendor-css', 'vendor-js', 'watch']);
+gulp.task('js', function() {
+  return gulp.src('src/javascripts/**')
+    .pipe(concat('application.js'))
+    .pipe(gulp.dest('src/build/'));
+});
+
+gulp.task('default', ['images', 'images-jpg', 'vendor-css', 'vendor-js', 'js', 'watch']);
