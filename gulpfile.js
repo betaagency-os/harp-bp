@@ -18,7 +18,10 @@ var vendor = {
     //'src/_vendor/instantclick/instantclick.js',
     //'src/_vendor/angular/angular.js',
     'src/_vendor/statistic.js',
-    'src/_vendor/share.js'
+    'src/_vendor/share.js',
+    'src/_vendor/gsap/src/minified/TweenMax.min.js',
+    'src/_vendor/gsap/src/minified/plugins/ThrowPropsPlugin.min.js',
+    'src/_vendor/gsap/src/minified/utils/Draggable.min.js',
   ]
 };
 
@@ -43,6 +46,7 @@ gulp.task('watch', function() {
   gulp.watch('src/_images/{**/*,*}.{jpg,jpeg}', ['images-jpg']);
   gulp.watch('src/_images/{**/*,*}.{png,gif}', ['images']);
   gulp.watch('src/javascripts/**', ['js']);
+  gulp.watch(vendor.js, ['vendor-js']);
   gulp.watch(['src/build/**', 'src/**.jade', 'src/javascripts/**']).on('change', livereload.changed);
 });
 
