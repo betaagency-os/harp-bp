@@ -1,0 +1,30 @@
+#!/bin/bash
+if [ "$#" -eq 0 ]; then
+      echo "Illegal number of parameters"
+      exit
+fi
+
+NAME=`echo $1 | sed -r 's/([A-Z])/-\L\1/g'`
+
+mkdir "src/blocks/$NAME" 2> /dev/null
+echo "include ../../_vendor/bemto
++b.$NAME
+  | Hello, $NAME!
+  div(ng-transclude)" > "src/blocks/$NAME/html.jade"
+
+echo ".$NAME{
+  display: block;
+}" > "src/blocks/$NAME/style.css"
+
+echo "angular
+  .module('agency.beta')
+  .directive('$1', function(){
+    return {
+      restrict: 'E',
+      transclude: true,
+      templateUrl: BASEURL+'/blocks/$NAME/html.html',
+      link: function(scope, elem, attrs){
+
+      }
+    };
+  }); " > "src/blocks/$NAME/directive.js"

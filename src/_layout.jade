@@ -22,10 +22,15 @@ html
 
     script(src=STATICURL+'/build/vendor.js?v='+V)
     link( href=STATICURL+"/build/vendor.css?v="+V rel="stylesheet")
+
+    script(src=STATICURL+'/build/blocks.js?v='+V)
+    link( href=STATICURL+"/build/blocks.css?v="+V rel="stylesheet")
+
     script(src=STATICURL+'/javascripts/application.js?v='+V)
     link( href=STATICURL+"/build/main.css?v="+V rel="stylesheet")
 
   body
+    div(ng-app='app')
     != yield
     != partial("_instantclick")
     != partial("_footer")

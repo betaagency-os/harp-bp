@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var postcss = require('gulp-postcss');
 var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
@@ -22,7 +23,8 @@ var vendor = {
     'src/_vendor/gsap/src/minified/TweenMax.min.js',
     'src/_vendor/gsap/src/minified/plugins/ThrowPropsPlugin.min.js',
     'src/_vendor/gsap/src/minified/utils/Draggable.min.js',
-    'src/_vendor/beta-common.js'
+    'src/_vendor/beta-common.js',
+    'src/_vendor/beta-angular.js',
   ]
 };
 
@@ -47,8 +49,34 @@ gulp.task('watch', function() {
   gulp.watch('src/_images/{**/*,*}.{jpg,jpeg}', ['images-jpg']);
   gulp.watch('src/_images/{**/*,*}.{png,gif}', ['images']);
   gulp.watch('src/javascripts/**', ['js']);
+  gulp.watch('src/blocks/*/style.css', ['blocks-css']);
+  gulp.watch('src/blocks/*/*.js', ['blocks-js']);
   gulp.watch(vendor.js, ['vendor-js']);
   gulp.watch(['src/build/**', 'src/**.jade', 'src/javascripts/**']).on('change', livereload.changed);
+});
+
+gulp.task('blocks-js', function() {
+  return gulp.src('src/blocks/*/*.js')
+    .pipe(concat('blocks.js'))
+    .pipe(gulp.dest('src/build/'));
+});
+gulp.task('blocks-css', function(){
+  return gulp.src('src/blocks/*/style.css')
+    .pipe(concat('blocks.css'))
+    .pipe(postcss([
+      require('postcss-nested'),
+      require('postcss-mixins'),
+      require('postcss-custom-media'),
+      require('postcss-assets')({
+        loadPaths: ['src/blocks/'],
+        basePath: 'src/',
+        cachebuster: true
+      }),
+      require('postcss-size'),
+      require('cssnext')(),
+      require('autoprefixer-core')()
+    ]))
+    .pipe(gulp.dest('src/build/'));
 });
 
 gulp.task('vendor-css', function() {
@@ -69,4 +97,8 @@ gulp.task('js', function() {
     .pipe(gulp.dest('src/build/'));
 });
 
-gulp.task('default', ['images', 'images-jpg', 'vendor-css', 'vendor-js', 'js', 'watch']);
+gulp.task('default', [
+  'images', 'images-jpg',
+  'vendor-css', 'vendor-js',
+  'blocks-css',  'blocks-js',
+  'js', 'watch']);
